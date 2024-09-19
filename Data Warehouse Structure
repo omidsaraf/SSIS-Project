@@ -1,0 +1,80 @@
+
+# Create Datawarehouse
+
+CREATE DATABASE Northwind_DW
+GO
+
+
+
+
+# Create Tables (Dimension, Fact) only Metadata
+
+USE Northwind_DW
+GO
+--DimCustomers:
+CREATE TABLE DimCustomers (CustomerKey INT NOT NULL IDENTITY PRIMARY KEY,
+                             CustomerID NCHAR(5) NOT NULL,
+			     CompanyName NVARCHAR(40) NOT NULL,
+			     Country NVARCHAR(15) NOT NULL,
+		             Current_Country NVARCHAR(15) NOT NULL,
+			     StartDate DATETIME NOT NULL,
+			     EndDate DATETIME NULL,
+                         ISInferred Bit Not Null Default(0)
+			     )
+GO
+--DimEmployees:
+CREATE TABLE DimEmployees (EmployeeKey INT NOT NULL IDENTITY PRIMARY KEY,
+                           EmployeeID INT NOT NULL,
+                           FirstName NVARCHAR(10) NOT NULL,
+		           LastName NVARCHAR(20) NOT NULL
+			  )
+GO
+--DimSuppliers:
+
+CREATE TABLE DimSuppliers (SupplierKey INT NOT NULL IDENTITY PRIMARY KEY,
+                           SupplierID INT NOT NULL,
+			  CompanyName NVARCHAR(40) NOT NULL,
+			  Country NVARCHAR(15) NOT NULL
+			     )
+GO
+--DimProducts:
+CREATE TABLE [dbo].[DimProducts](
+       [ProductKey] [INT] NOT NULL IDENTITY PRIMARY KEY,
+	[ProductID] [int] NOT NULL,
+	[ProductName] [nvarchar](40) NOT NULL,
+	[CategoryID] [int] NOT NULL,
+	[CategoryName] [nvarchar](15) NOT NULL,
+	[Status] [nvarchar](8) NOT NULL,
+	[SupplierKey] [int] NOT NULL,
+	StartDate DATETIME NOT NULL,
+	EndDate DATETIME NULL,
+)
+GO
+--DimShippers:
+CREATE TABLE DimShippers (ShipperKey INT NOT NULL IDENTITY PRIMARY KEY,
+                          ShipperID INT NOT NULL,
+		          CompanyName NVARCHAR(40) NOT NULL
+			  )
+GO
+--FactOrders:
+
+CREATE TABLE [FactOrders] (
+    [OrderID] INT NOT NULL,
+    [CustomerID] NCHAR(5) NOT NULL,
+    [EmployeeID] INT NOT NULL,
+    [OrderDate] DATETIME NOT NULL,
+    [ShipVia] INT NOT NULL,
+    [Freight] MONEY NOT NULL,
+    [ProductID] INT NOT NULL,
+    [Quantity] SMALLINT NOT NULL,
+    [UnitPrice] MONEY NOT NULL,
+    [SalesAmount] MONEY NOT NULL,
+    [DiscountAmount] Money NOT NULL,
+    [NetAmount] Money NOT NULL,
+    [EmployeeKey] INT NOT NULL,
+    [ShipperKey] INT NOT NULL,
+    [ProductKey] INT NOT NULL,
+    [CustomerKey] INT NOT NULL,
+    [MiladiDateKey] INT NOT NULL
+)
+GO
