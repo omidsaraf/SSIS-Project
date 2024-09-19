@@ -5,8 +5,6 @@ CREATE DATABASE Northwind_DW
 GO
 
 
-
-
 # Create Tables (Dimension, Fact) only Metadata
 
 USE Northwind_DW
