@@ -1,10 +1,10 @@
 # SSIS Project
 End to end project
 
-In This ETL project, the goal is to first create Dimension tables and then Fact tables. The steps involved in this process are:
+In this ETL project, the goal is to first create Dimension tables and then Fact tables. The steps involved in this process are:
 
 1. **Creating the Data Warehouse in SSMS**
-2. **Creating Dimension and Fact tables (structure only, no data) using T-SQL in SSMS**
+2. **Creating Dimension and Fact tables (structure) using T-SQL in SSMS**
 3. **Designing the Dimension loading process in Visual Studio:**
    - Designing the Control Flow, including Truncate Task and Data Flow Task.
    - Designing the Data Flow Task according to Attribute Types, including the data source (OLTP), SCD, and destination table.
