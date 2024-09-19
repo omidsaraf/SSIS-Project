@@ -15,6 +15,6 @@ In This ETL project, the goal is to first create Dimension tables and then Fact 
    - Incremental load by designing the Control Flow, including two CDC Tasks and one Data Flow Task (recording changes), Truncate, and then starting the load with a Join in the data source, using the Key Lookup component for changeable columns, using Stored Procedures for Historical Fields, and finally Inferred Handling.
 5. **Job (Execute Packages)**
    - Three Packages has been created incluing inital load for Dimention, initial load for Fact, Incremental load for fact
-   - Enable and Create a SQL Server Agent Job
-   - add steps to execute the SSIS packages.
+   - Enable SQL Server Agent Job
+   - Create Jobs to execute the SSIS packages.
    - Schedule the Job according to your desired frequency and activate it.
