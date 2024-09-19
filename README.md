@@ -13,6 +13,10 @@ In This ETL project, the goal is to first create Dimension tables and then Fact 
    - Enabling CDC for the relevant tables in OLTP.
    - Initial load by designing the Control Flow, including two CDC Tasks and one Data Flow Task (using key lookup and Stored Procedures).
    - Incremental load by designing the Control Flow, including two CDC Tasks and one Data Flow Task (recording changes), Truncate, and then starting the load with a Join in the data source, using the Key Lookup component for changeable columns, using Stored Procedures for Historical Fields, and finally Inferred Handling.
+5. **Deployment (SSIS Catalog)**
+   - During the installation of SQL Server and SSMS, in the Shared Features section, you need to check the SSIS Scale Out option to enable it.
+   - SSIS Scale Out allows us to scale out a large SSIS Package and run it in parallel across multiple servers.
+   - 
 5. **Job (Execute Packages)**
    - Three Packages has been created incluing inital load for Dimention, initial load for Fact, Incremental load for fact
    - Enable SQL Server Agent Job
