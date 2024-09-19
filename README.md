@@ -19,7 +19,7 @@ In This ETL project, the goal is to first create Dimension tables and then Fact 
    - Create SSIS DB
    - Import Packages From Visual Studio into SSMS
    - Test Project Deployment
-5. **Job (Execute Packages)**
+5. **Job (Automation)**
    - Three Packages has been created incluing inital load for Dimention, initial load for Fact, Incremental load for fact
    - Enable SQL Server Agent Job
    - Create Jobs to execute the SSIS packages.
