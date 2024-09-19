@@ -1,5 +1,5 @@
 # Data Source for Fact
-## For Initial Load
+## **For Initial Load**
 
 SELECT OD.OrderID, OD.ProductID , O.OrderDate , O.EmployeeID , O.CustomerID , O.ShipVia , 
      O.Freight / SUM(OD.Quantity) OVER (PARTITION BY OD.OrderID) * OD.Quantity As Freight ,
@@ -9,7 +9,7 @@ SELECT OD.OrderID, OD.ProductID , O.OrderDate , O.EmployeeID , O.CustomerID , O.
 FROM Orders O INNER JOIN [Order Details] OD 
    ON O.OrderID = OD.OrderID
 
-## For Incremental Load
+## **For Incremental Load**
 
 SELECT OD.OrderID, OD.ProductID , O.OrderDate , O.EmployeeID , O.CustomerID , O.ShipVia , 
      O.Freight / SUM(OD.Quantity) OVER (PARTITION BY OD.OrderID) * OD.Quantity As Freight ,
