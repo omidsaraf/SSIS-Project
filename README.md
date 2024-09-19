@@ -16,7 +16,9 @@ In This ETL project, the goal is to first create Dimension tables and then Fact 
 5. **Deployment (SSIS Catalog)**
    - During the installation of SQL Server and SSMS, in the Shared Features section, you need to check the SSIS Scale Out option to enable it.
    - SSIS Scale Out allows us to scale out a large SSIS Package and run it in parallel across multiple servers.
-   - 
+   - Create SSIS DB
+   - Import Packages From Visual Studio into SSMS
+   - Test Project Deployment
 5. **Job (Execute Packages)**
    - Three Packages has been created incluing inital load for Dimention, initial load for Fact, Incremental load for fact
    - Enable SQL Server Agent Job
