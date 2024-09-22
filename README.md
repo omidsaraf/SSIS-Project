@@ -1,8 +1,7 @@
 # SSIS Project
 End to end project
 
-In this ETL project, the goal is to first create Dimension tables and then Fact tables. The steps involved in this process are:
-
+In this ETL project, Northwind Dataset has been used as Datasource and followig steps involved in this process:
 1. **Creating the Data Warehouse in SSMS**
 2. **Creating Dimension and Fact tables (structure) using T-SQL in SSMS**
 3. **Designing the Dimension loading process in Visual Studio:**
