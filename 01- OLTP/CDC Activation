@@ -1,3 +1,6 @@
+## Activate CDC for Orders and Order Details
+
+
 use Northwind
 GO
 EXEC sys.sp_cdc_enable_db  --must be activated by DBA
