@@ -5,5 +5,4 @@ SELECT OD.OrderID, OD.ProductID , O.OrderDate , O.EmployeeID , O.CustomerID , O.
 	   OD.Quantity*OD.UnitPrice*(1-OD.Discount) AS NetAmount
 FROM Orders O INNER JOIN [Order Details] OD 
    ON O.OrderID = OD.OrderID
-
-WHERE OD.OrderID IN (SELECT OrderID FROM Northwind_DW.dbo.Changes) 
+WHERE OD.OrderID IN (SELECT OrderID FROM V_OrderChanges)
