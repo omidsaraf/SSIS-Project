@@ -1,0 +1,8 @@
+**ETL Setting Database as a Bridge Between OLTP and DW:**
+
+1. **Staging Tables**: The ETL Setting database includes staging tables to facilitate the loading and transformation of data.
+2. **Detect Changes**: If CDC (Change Data Capture) is not available in OLTP, create tables to detect changes.
+3. **Views with Union All**: Create views using `Union All` to record changes.
+4. **Incremental Load Connections**: Establish connections for incremental loading to avoid truncating and reloading tables constantly. Only apply recent changes to Fact tables.
+
+This approach ensures efficient data loading and transformation between OLTP and Data Warehouse (DW) systems.
