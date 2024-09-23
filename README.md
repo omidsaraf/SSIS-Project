@@ -1,5 +1,4 @@
-# SSIS Project
-End to end project
+# SSIS Northwind Project
 
 In this ETL project, Northwind Dataset has been used as Datasource and followig steps involved in this process:
 1. **Creating the Data Warehouse in SSMS**
