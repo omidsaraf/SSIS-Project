@@ -1,4 +1,3 @@
-# Script for DimDate
 
 --Make sure you set the Start and End Date below on row 58 and 59
 --Create the tables
@@ -11,7 +10,7 @@ END CATCH
 
 CREATE TABLE [dbo].[DimDate](
 --[DateSK] [int] IDENTITY(1,1) NOT NULL--Use this line if you just want an autoincrementing counter AND COMMENT BELOW LINE
-[DateSK] [int] NOT NULL--TO MAKE THE DateSK THE YYYYMMDD FORMAT USE THIS LINE AND COMMENT ABOVE LINE.
+  [DateKey] [int] NOT NULL--TO MAKE THE DateSK THE YYYYMMDD FORMAT USE THIS LINE AND COMMENT ABOVE LINE.
 , [FullDate] [datetime] NOT NULL
 , [Day] [tinyint] NOT NULL
 , [DaySuffix] [varchar](4) NOT NULL
@@ -40,7 +39,7 @@ CREATE TABLE [dbo].[DimDate](
 , [HolidayText] [varchar](50) NULL
 CONSTRAINT [PK_DimDate] PRIMARY KEY CLUSTERED
 (
-[DateSK] ASC
+[DateKey] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -69,7 +68,7 @@ DECLARE @StartDate datetime
 , @CurrentMonth INT
 , @CurrentDate date = getdate()
 
-SELECT @StartDate = '1/01/2023'  -- -- Set The start and end date
+SELECT @StartDate = '1/01/1995'  -- -- Set The start and end date
 , @EndDate = '1/01/2024'--Non inclusive. Stops on the day before this.
 , @CurrentMonth = 1 --Counter used in loop below.
 
@@ -94,7 +93,7 @@ WHERE DOW = DATEPART(DW,@DATE)
 
 INSERT INTO DimDate
 (
-[DateSK],       -- --TO MAKE THE DateSK THE YYYYMMDD FORMAT UNCOMMENT THIS LINE… Comment for autoincrementing.
+[DateKey],       -- --TO MAKE THE DateSK THE YYYYMMDD FORMAT UNCOMMENT THIS LINE… Comment for autoincrementing.
 [FullDate]
 , [Day]
 , [DaySuffix]
@@ -224,10 +223,10 @@ WHERE [CalendarMonthNumber] = 1 AND [DAY] = 1
 --Set OpenFlag = 0 if New Year's Day is on weekend
 UPDATE dbo.DimDate
 SET OpenFlag = 0
-WHERE DateSK in
+WHERE DateKey in
 (Select CASE
 WHEN DayOfWeek = 'Sunday'
-THEN DATESK + 1
+THEN DATEKey + 1
 END
 FRom DimDate
 where CalendarMonthNumber = 1
@@ -263,9 +262,9 @@ SET HolidayText = 'Memorial Day',
 HolidayFlag = 1,
 OpenFlag = 0
 FROM DimDate
-WHERE DateSK IN
+WHERE DateKey IN
 (
-SELECT MAX([DateSK])
+SELECT MAX([DateKey])
 FROM dbo.DimDate
 WHERE [CalendarMonthName] = 'May'
 AND [DayOfWeek] = 'Monday'
@@ -281,10 +280,10 @@ WHERE [CalendarMonthNumber] = 7 AND [DAY] = 4
 --Set OpenFlag = 0 if July 4th is on weekend
 UPDATE dbo.DimDate
 SET OpenFlag = 0
-WHERE DateSK in
+WHERE DateKey in
 (Select CASE
 WHEN DayOfWeek = 'Sunday'
-THEN DATESK + 1
+THEN DATEKey + 1
 END
 FRom DimDate
 where CalendarMonthNumber = 7
@@ -297,9 +296,9 @@ SET HolidayText = 'Labor Day',
 HolidayFlag = 1,
 OpenFlag = 0
 FROM DimDate
-WHERE DateSK IN
+WHERE DateKey IN
 (
-SELECT MIN([DateSK])
+SELECT MIN([DateKey])
 FROM dbo.DimDate
 WHERE [CalendarMonthName] = 'September'
 AND [DayOfWeek] = 'Monday'
@@ -313,9 +312,9 @@ SET HolidayText = 'Columbus Day',
 HolidayFlag = 1,
 OpenFlag = 0
 FROM DimDate
-WHERE DateSK IN
+WHERE DateKey IN
 (
-SELECT MIN(DateSK)
+SELECT MIN(DateKey)
 FROM dbo.DimDate
 WHERE [CalendarMonthName] = 'October'
 AND [DayOfWeek] = 'Monday'
@@ -329,13 +328,13 @@ UPDATE DimDate
 SET HolidayText = 'Veteran”s Day',
 HolidayFlag = 1,
 OpenFlag = 0
-WHERE DateSK in (
+WHERE DateKey in (
 Select CASE
 WHEN DayOfWeek = 'Saturday'
-THEN DateSK -- 1
+THEN DateKey -- 1
 WHEN DayOfWeek = 'Sunday'
-THEN DateSK + 1
-ELSE DateSK
+THEN DateKey + 1
+ELSE DateKey
 END as VeteransDateSK
 FROM DimDate
 WHERE [CalendarMonthNumber]  = 11
@@ -362,12 +361,12 @@ WHERE [CalendarMonthNumber] = 12 AND [DAY] = 25
 --Set OpenFlag = 0 if Christmas on weekend
 UPDATE dbo.DimDate
 SET OpenFlag = 0
-WHERE DateSK in
+WHERE DateKey in
 (Select CASE
 WHEN DayOfWeek = 'Sunday'
-THEN DATESK + 1
+THEN DateKey + 1
 WHEN Dayofweek = 'Saturday'
-THEN DateSK -- 1
+THEN DateKey -- 1
 END
 FRom DimDate
 where CalendarMonthNumber = 12
@@ -416,7 +415,7 @@ END CATCH
 CREATE TABLE #tmpHoliday(ID INT IDENTITY(1,1), DateID int, Week TINYINT, YEAR CHAR(4), DAY CHAR(2))
 
 INSERT INTO #tmpHoliday(DateID, [YEAR],[DAY])
-SELECT [DateSK], CalendarYearNumber, [DAY]
+SELECT [DateKey], CalendarYearNumber, [DAY]
 FROM dbo.DimDate
 WHERE [CalendarMonthNumber] = 11
 AND [Dayofweek] = 'Monday'
@@ -459,7 +458,7 @@ UPDATE DT
 SET HolidayText = 'Election Day'
 FROM dbo.DimDate DT
 JOIN #tmpHoliday HL
-ON (HL.DateID + 1) = DT.DateSK
+ON (HL.DateID + 1) = DT.DateKey
 WHERE [WEEK] = 1
 
 DROP TABLE #tmpHoliday
@@ -534,3 +533,4 @@ CREATE NONCLUSTERED INDEX [IDX_dim_Time_HolidayText] ON [dbo].[DimDate]
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
 
 PRINT convert(varchar,getdate(),113)--USED FOR CHECKING RUN TIME.
+
