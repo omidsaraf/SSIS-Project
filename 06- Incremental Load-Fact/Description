@@ -1,0 +1,20 @@
+Incremental Load for Fact Table:
+
+    The job triggers the SSIS package designed for the incremental load of Fact tables.
+    Control Flow: Includes tasks to capture changes using CDC, apply transformations, and load only the changed data into Fact tables.
+    Data Flow Task: Extracts changed data from the OLTP source, performs key lookups, applies transformations, and loads data into the Fact tables. CDC Method:
+
+    Start from Last LSN:
+        Use CDC Control in Control Flow to read the last LSN (Log Sequence Number) and load the range from the last LSN to the current LSN into the CDC State table.
+
+    Identify Changes:
+        In Data Flow Task 1, activate CDC service, read the CDC table in the ETL Setting database, and store changes in the Change Table using Union All.
+
+    Clear Changes from Fact:
+        In Control Flow, remove changes from the Fact table. In Data Flow Task 2, perform an initial load of changed records from OLTP into the Data Warehouse using a join, with a condition Where ID IN (SELECT ID FROM V_Changes).
+
+    Mark LSN for Next Incremental Load:
+        Store the transferred range in the CDC table in the ETL Setting database.
+
+    Update Dimension Tables:
+        Update Dimension tables in the Data Warehouse first, followed by Fact tables. Perform lookups in Dimension tables to get surrogate keys (SK) and use them as foreign keys in Fact tables
