@@ -10,9 +10,7 @@ To show code in your GitHub repository with proper formatting and syntax highlig
    - To add code with syntax highlighting, use fenced code blocks. These are created by placing triple backticks (```) before and after your code block.
    - Optionally, you can specify the language for syntax highlighting by adding the language name after the opening backticks.
 
-### Example
-
-Here’s an example of how to format a PowerShell script in a Markdown file:
+In the following shows how to format a PowerShell script in a Markdown file:
 
 ```markdown
 # Security Patching Job
