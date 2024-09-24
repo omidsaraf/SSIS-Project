@@ -1,5 +1,5 @@
 # Create Tables (Dimension) only Metadata
-
+```sql
 USE Northwind_DW
 GO
 --DimCustomers:
