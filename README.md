@@ -1,4 +1,5 @@
 # ETL Project Using Northwind Dataset
+![Project Architecture](https://github.com/user-attachments/assets/2d410670-d77a-4ef6-8164-e553a047b3f8)
 
 ## Requirements
 
@@ -89,11 +90,16 @@ By implementing these job automation tasks, you can ensure that your ETL process
    - **Job 1**: Triggers the SSIS package for the initial load of Dimension tables.
    - **Control Flow**: Includes tasks to truncate existing Dimension tables and load new data from the OLTP source.
    - **Data Flow Task**: Extracts data from the OLTP source, applies necessary transformations, and loads it into the Dimension tables in the Data Warehouse.
+![01- Full Load Dimension](https://github.com/user-attachments/assets/10310c3c-9fb5-4bd6-ace3-717cc0013128)
+
 
 2. **Full Load for Fact Table**
    - **Job 2**: Triggers the SSIS package for the initial load of Fact tables.
    - **Control Flow**: Includes tasks to enable CDC, perform initial data extraction, and load data into Fact tables.
    - **Data Flow Task**: Extracts data from the OLTP source, performs key lookups, applies transformations, and loads data into the Fact tables.
+  
+  ![02- Initial Load Fact](https://github.com/user-attachments/assets/30be4575-ae8c-4af2-9dc2-bf7ad5a87976)
+
 
 ### Daily (Incremental Load)
 
@@ -101,6 +107,8 @@ By implementing these job automation tasks, you can ensure that your ETL process
    - **Job**: Triggers the SSIS package for the incremental load of Fact tables.
    - **Control Flow**: Includes tasks to capture changes using CDC, apply transformations, and load only the changed data into Fact tables.
    - **Data Flow Task**: Extracts changed data from the OLTP source, performs key lookups, applies transformations, and loads data into the Fact tables.
+![03- Incremental Load Fact](https://github.com/user-attachments/assets/a93e8546-70e3-46a6-a8eb-87a113503d8b)
+
 
 ### CDC Method
 
@@ -129,9 +137,14 @@ By implementing these job automation tasks, you can ensure that your ETL process
 - **Retry Logic**: Implement retry logic for transient errors. Configure SSIS packages to retry tasks a specified number of times before failing.
 
 ### Outcome
+Sales Analysis Dashboard
 ![Sales Analysis Dashboard](https://github.com/user-attachments/assets/f0755064-fa39-45a7-85ae-63807ea8713e)
 
 The ETL process ensures that the Data Warehouse is consistently updated with the latest data from the OLTP source. Dimension tables are loaded first to ensure that Fact tables can reference the correct surrogate keys. The incremental load process minimizes downtime and ensures that only the latest changes are applied, maintaining the integrity and performance of the Data Warehouse. This setup supports efficient data analysis and reporting, providing accurate and up-to-date insights for business decision-making.
+
+Data Model
+![PowerBI_Data Model](https://github.com/user-attachments/assets/1bb9c052-7610-4c02-8b75-4fe408b7922b)
+
 
 ### Additional Considerations:
 1. **Load Balancing**: Implement load balancing techniques to distribute ETL workloads evenly across available resources. This helps in maximizing resource utilization and improving overall performance.
