@@ -1,4 +1,4 @@
-a single SQL Server Agent job that includes all the maintenance tasks: Index Maintenance, Statistics Update, Database Integrity Checks, and Cleanup Jobs.
+Create a single SQL Server Agent job that includes all the maintenance tasks: Index Maintenance, Statistics Update, Database Integrity Checks, and Cleanup Jobs.
 
 ### Step-by-Step Guide to Create a Comprehensive Maintenance Plan Job
 
