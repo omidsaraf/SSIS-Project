@@ -22,7 +22,6 @@
    ```
 
 4. **Create a Stored Procedure to Log Access Attempts**:
-   - Create a stored procedure to log each access attempt.
    ```sql
    CREATE PROCEDURE LogAccessAttempt
        @UserName NVARCHAR(100),
