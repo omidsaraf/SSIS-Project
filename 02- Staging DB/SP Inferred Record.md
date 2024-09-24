@@ -1,3 +1,4 @@
+```sql
 --- SP Inferred Record:
 
 CREATE OR ALTER PROCEDURE usp_GetCustomerKey @CustomerID nchar(5), @CustomerKey int OUTPUT
