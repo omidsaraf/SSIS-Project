@@ -55,15 +55,14 @@ This ETL project utilizes the Northwind Dataset as the data source. The project 
    - **Initial Load for Fact**: Create a job to perform the initial load of Fact tables. This job should run once to load historical data into the Fact tables.
 2. **Incremental Load Jobs**:
    - **Incremental Load for Fact**: Create a job to perform the incremental load of Fact tables. This job should run at regular intervals (e.g., daily, hourly) to load new or updated data into the Fact tables.
-3. **Performance Monitoring Jobs**:
+3. **Performance Monitoring Job**:
    - **Performance Monitoring**: Create a job to regularly monitor the performance of ETL jobs using tools like SQL Server Profiler, Performance Monitor, and Azure Monitor. This job should track performance metrics and identify any bottlenecks or inefficiencies.
-4. **Resource Utilization Jobs**:
    - **Resource Utilization Monitoring**: Create a job to monitor CPU, memory, and disk usage. This job should ensure that ETL processes are not overloading the system and adjust resource allocation as needed.
 5. **Job Execution Monitoring**:
    - **Job Execution Tracking**: Create a job to track the execution time of ETL jobs. This job should use SQL Server Agent job history and SSIS logging to review job performance and identify any delays or bottlenecks.
 6. **Automatic Email Notifications for Job Failures**:
    - **Email Notifications**: Create a job to automatically send email notifications in case of job failures. Configure Database Mail in SQL Server to send alerts and customize email templates to include relevant job details and error messages.
-7. **Maintenance Plan Jobs**:
+7. **Maintenance Plan Job**:
    - **Index Maintenance**: Create a job to rebuild or reorganize indexes regularly to maintain query performance.
    - **Statistics Update**: Create a job to update statistics regularly to ensure query optimization.
    - **Database Integrity Checks**: Create a job to perform regular integrity checks on databases to detect and repair corruption.
