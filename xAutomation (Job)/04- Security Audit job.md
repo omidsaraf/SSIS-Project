@@ -1,3 +1,5 @@
+
+```sql
 -- Step 1: Review Audit Logs
 EXEC msdb.dbo.sp_send_dbmail
     @profile_name = 'YourMailProfile',
