@@ -132,32 +132,12 @@ The ETL process ensures that the Data Warehouse is consistently updated with the
 
 ## Best Practices
 
-### Null Handling
-
-In the ETL (Extract, Transform, Load) process, handling `NULL` values is a crucial task. There are several methods to achieve this:
-
-1. **Transformation during extraction**: You can convert `NULL` values in SQL using the `ISNULL` or `COALESCE` function. For example:
-   ```sql
-   SELECT ISNULL(column, 'Unknown') AS column
-   FROM source_table
-   ```
-
-2. **Transformation during the ETL process**: During the transformation phase, you can add a transformation step to replace `NULL` values with a default value. In SSIS, you can use the `Derived Column` component to replace `NULL` values with 'Unknown'.
-
-3. **Adding an Unknown column**: For each column that may have `NULL` values, add a default or "Unknown" value to that column in the table and set the ID of that column in the `Derived Column`. This way, if a `NULL` value is encountered, it will take that value.
-
-In cases where a row in the Fact table has a record that does not correspond to one of the Dimension columns, you can create default records for each Dimension. This method allows you to create exception reports to track the number of Facts assigned to such rows.
-
-For example, if the `Dim Employee` table has a nullable customer column, you can add an Unknown column to it and set the ID of that unknown record in the `Derived Column`.
-
-For instance, if a date column has a `NULL` value, you can create a default record in your Dimension table and reference the default record when a `NULL` value is found. Similarly, if a data column is empty or `NULL`, you can convert these values to a specific default value.
-
 ### Error Handling
 
-1. **Event Handlers**: Implement event handlers in SSIS to manage errors. Configure OnError, OnWarning, and OnTaskFailed event handlers to capture and respond to issues.
-2. **Logging**: Set up comprehensive logging to capture detailed information about the ETL process. Use SSIS log providers to log events to SQL Server, text files, or Windows Event Log.
-3. **Notifications**: Configure email notifications to alert administrators of job failures or critical errors. Use Database Mail in SQL Server to send alerts.
-4. **Retry Logic**: Implement retry logic for transient errors. Configure SSIS packages to retry tasks a specified number of times before failing.
+- **Event Handlers**: Implement event handlers in SSIS to manage errors. Configure OnError, OnWarning, and OnTaskFailed event handlers to capture and respond to issues.
+- **Logging**: Set up comprehensive logging to capture detailed information about the ETL process. Use SSIS log providers to log events to SQL Server, text files, or Windows Event Log.
+- **Notifications**: Configure email notifications to alert administrators of job failures or critical errors. Use Database Mail in SQL Server to send alerts.
+- **Retry Logic**: Implement retry logic for transient errors. Configure SSIS packages to retry tasks a specified number of times before failing.
 
 ### Additional Considerations:
 1. **Load Balancing**: Implement load balancing techniques to distribute ETL workloads evenly across available resources. This helps in maximizing resource utilization and improving overall performance.
