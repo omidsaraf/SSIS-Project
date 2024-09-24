@@ -49,7 +49,7 @@ This ETL project utilizes the Northwind Dataset as the data source. The project 
 
 ### Enable SQL Server Agent Job
 - **Activate SQL Server Agent**: Ensure SQL Server Agent is enabled to manage job scheduling and execution.
-## Create Jobs
+### Create Jobs
 1. **Initial Load Jobs**:
    - **Initial Load for Dimension**: Create a job to perform the initial load of Dimension tables. This job should run once to populate the Dimension tables with historical data.
    - **Initial Load for Fact**: Create a job to perform the initial load of Fact tables. This job should run once to load historical data into the Fact tables.
@@ -75,7 +75,7 @@ This ETL project utilizes the Northwind Dataset as the data source. The project 
    - **Security Audit Job**: Create a job to perform regular security audits. This job should check for compliance with security policies, review audit logs, verify access controls, and ensure encryption is properly configured.
    - **Security Alerts**: Create a job to send email notifications for specific security events, such as unauthorized access attempts or changes to security settings.
    - **Patch Management**: Create a job to apply security patches and updates to SQL Server and related components regularly.
-## Schedule Jobs
+### Schedule Jobs
 - **Frequency Planning**: Determine the optimal frequency for each job based on data update requirements and system performance considerations.
 - **Job Scheduling**: Use SQL Server Agent to schedule jobs, ensuring they run at the specified times without manual intervention.
 
