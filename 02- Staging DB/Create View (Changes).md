@@ -1,3 +1,5 @@
+
+```sql
 USE [ETL Settings]
 GO
 CREATE OR ALTER VIEW V_ChangedOrders
