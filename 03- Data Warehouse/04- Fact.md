@@ -1,5 +1,5 @@
 # Create Fact only Metadata
-
+```sql
 USE Northwind_DW
 GO
 --FactOrders:
