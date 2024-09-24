@@ -125,6 +125,13 @@ By implementing these job automation tasks, you can ensure that your ETL process
 
 The ETL process ensures that the Data Warehouse is consistently updated with the latest data from the OLTP source. Dimension tables are loaded first to ensure that Fact tables can reference the correct surrogate keys. The incremental load process minimizes downtime and ensures that only the latest changes are applied, maintaining the integrity and performance of the Data Warehouse. This setup supports efficient data analysis and reporting, providing accurate and up-to-date insights for business decision-making.
 
+
+
+
+
+
+## Best Practices
+
 ### Null Handling
 
 In the ETL (Extract, Transform, Load) process, handling `NULL` values is a crucial task. There are several methods to achieve this:
@@ -152,14 +159,7 @@ For instance, if a date column has a `NULL` value, you can create a default reco
 3. **Notifications**: Configure email notifications to alert administrators of job failures or critical errors. Use Database Mail in SQL Server to send alerts.
 4. **Retry Logic**: Implement retry logic for transient errors. Configure SSIS packages to retry tasks a specified number of times before failing.
 
-### Monitoring
-
-1. **Performance Monitoring**: Regularly monitor the performance of ETL jobs to ensure they are running efficiently. Use tools like SQL Server Profiler, Performance Monitor, and Azure Monitor to track performance metrics.
-2. **Resource Utilization**: Monitor CPU, memory, and disk usage to ensure the ETL processes are not overloading the system. Adjust resource allocation as needed.
-3. **Job Execution**: Track the execution time of ETL jobs to identify any delays or bottlenecks. Use SQL Server Agent job history and SSIS logging to review job performance.
-
-## Best Practices
-
+### Additional Considerations:
 1. **Load Balancing**: Implement load balancing techniques to distribute ETL workloads evenly across available resources. This helps in maximizing resource utilization and improving overall performance.
 2. **Capacity Planning**: Regularly review and plan for future capacity needs based on data growth trends. This ensures that the ETL infrastructure can handle increasing data volumes without performance degradation.
 3. **Backup and Recovery**: 
