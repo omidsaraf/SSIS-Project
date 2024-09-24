@@ -45,9 +45,9 @@ This ETL project utilizes the Northwind Dataset as the data source. The project 
 - **Import Packages**: Import ETL packages from Visual Studio into SSMS.
 - **Test Deployment**: Conduct thorough testing to ensure the project is correctly deployed and functioning as expected.
 
-### 7. Job Automation
+## 7. Job Automation
 
-### Enable SQL Server Agent Job
+## Enable SQL Server Agent Job
 - **Activate SQL Server Agent**: Ensure SQL Server Agent is enabled to manage job scheduling and execution.
 ### Create Jobs
 1. **Initial Load Jobs**:
