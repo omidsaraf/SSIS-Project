@@ -1,3 +1,4 @@
+```sql
 USE ETL_Setting
 GO
 
