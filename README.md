@@ -129,6 +129,7 @@ By implementing these job automation tasks, you can ensure that your ETL process
 - **Retry Logic**: Implement retry logic for transient errors. Configure SSIS packages to retry tasks a specified number of times before failing.
 
 ### Outcome
+![Sales Analysis Dashboard](https://github.com/user-attachments/assets/f0755064-fa39-45a7-85ae-63807ea8713e)
 
 The ETL process ensures that the Data Warehouse is consistently updated with the latest data from the OLTP source. Dimension tables are loaded first to ensure that Fact tables can reference the correct surrogate keys. The incremental load process minimizes downtime and ensures that only the latest changes are applied, maintaining the integrity and performance of the Data Warehouse. This setup supports efficient data analysis and reporting, providing accurate and up-to-date insights for business decision-making.
 
