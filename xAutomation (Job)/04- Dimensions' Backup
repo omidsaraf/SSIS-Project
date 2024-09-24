@@ -1,9 +1,0 @@
-
-**If the organization's policy is Full backup:**
-After the ETL process completes, for example at 3 AM, take a backup. Perform Full Backups from Friday to Friday, and Differential Backups from Saturday to Thursday.
-
-**If not:**
-Only take a backup of Dimensions with Historical Attributes at the end of each ETL (this occupies less space). Since SQL Server does not have a command to backup a table, create another database and define a Job for it to:
-- Drop existing tables in that database.
-- Insert tables into that database using `SELECT INTO`.
-- Take a backup after that.
