@@ -1,4 +1,10 @@
-create a SQL Server Agent job that regularly applies security patches and updates to SQL Server and related components. This setup ensures that your SQL Server instance is regularly updated with the latest security patches, and administrators are notified upon successful completion or failure of the patching process.
+Here's the content formatted for your GitHub repository:
+
+---
+
+## SQL Server Security Patching Job
+
+This guide outlines the steps to create a SQL Server Agent job that regularly applies security patches and updates to SQL Server and related components. This setup ensures that your SQL Server instance is regularly updated with the latest security patches, and administrators are notified upon successful completion or failure of the patching process.
 
 ### Step-by-Step Guide to Create a Security Patching Job
 
@@ -53,3 +59,5 @@ Send-MailMessage -To 'admin@example.com' -From 'sqlserver@example.com' -Subject 
    - Go to the `Notifications` page.
    - Check the `E-mail` option and select the operator you created earlier.
    - Set the condition to `When the job fails`.
+
+---
