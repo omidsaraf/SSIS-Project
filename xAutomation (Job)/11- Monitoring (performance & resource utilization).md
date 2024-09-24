@@ -18,7 +18,7 @@
    - Go to the `Steps` page and click `New`.
    - Create steps for performance monitoring and resource utilization monitoring.
 
-### Example SQL Scripts and PowerShell Commands
+### SQL Scripts and PowerShell Commands
 
 #### Step 1: Performance Monitoring
 
