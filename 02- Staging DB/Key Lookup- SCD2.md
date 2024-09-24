@@ -1,3 +1,4 @@
+``` sql
 --SP for Key Look up ProductKey:
 
 USE Northwind_DW
